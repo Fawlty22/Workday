@@ -3,11 +3,11 @@ var currentDayEl = $('#currentDay')
 var businessHours = [9,10,11,12,13,14,15,16,17];
 var currentHour = moment().hour();
 
-function showHours(){
+function showHourEls(){
     //for loop for displaying hours on screen
     for ( let i = 0; i < businessHours.length; i++){
         var row = $("<div class='row'>");
-        var col1 = $("<div class='col'>");
+        var col1 = $("<div class='col d-flex hour'>");
 
         var getBusinessHours = businessHours[i] + " AM";
 
@@ -18,20 +18,26 @@ function showHours(){
             }
         }
     //create inputs
-    var inputArea = $("<input class='form-control col-8' type='text' placeholder=Default input' aria-label='default input example'>")
+    var inputArea = $("<input type='text' class='user-input form-control col-10' placeholder='Whatcha got going on?' aria-label='Recipients username' aria-describedby='button-addon2'>")
     
+    //create buttons
+    var hourButton = $("<button class='btn btn-outline-dark col' type='button' id='button-addon2'><span class='oi oi-check'></span></button>")
+
     //append hours
     col1.append(getBusinessHours);
     row.append(col1);
     
     //append inputs
     row.append(inputArea);
+
+    //append buttons 
+    row.append(hourButton);
+
     //append row
     $("#container").append(row);
     
     }
     
-    
 }
 
-showHours();
+showHourEls();
