@@ -67,7 +67,7 @@ function auditHours() {
             $(this).children('.user-input').addClass('present')
         }
         console.log('current hour', currentHour)
-        console.log("object", time)
+        console.log("time-object", time)
 
     })
 } 
