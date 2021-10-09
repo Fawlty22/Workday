@@ -3,6 +3,7 @@ var currentDayEl = $('#currentDay')
 var businessHours = [9,10,11,12,13,14,15,16,17];
 var currentHour = moment().hour();
 var hourContainer = $('#container')
+// var currentHourParsed = currentHour.format("LT")
 
 //interval for clock at top of page
 function updateClock() {
@@ -52,8 +53,22 @@ function auditHours() {
     hourContainer.children().each(function() {
         var timeEl = $(this).children('.hour');
         var timetext = timeEl.text().trim();
-        var time = moment(timetext, "LT");
-        console.log('time moment object', time);
+        var time = moment(timetext, "LT").format('H');
+
+        if (moment().isAfter(time)){
+            $(this).children('.user-input').addClass('past')
+        }
+
+        if (moment().isBefore(time)){
+            $(this).children('.user-input').addClass('future')
+        }
+
+        if (moment(currentHour).isSame(time)) {
+            $(this).children('.user-input').addClass('present')
+        }
+        console.log('current hour', currentHour)
+        console.log("object", time)
+
     })
 } 
         

@@ -72,6 +72,12 @@ textarea{
 
 .user-input {
   height: auto;
+  color: black;
+}
+
+.user-input::placeholder {
+  height: auto;
+  color: black;
 }
 
 .hour {
@@ -80,3 +86,4 @@ textarea{
   font-size: larger;
   font-weight: bolder;
 }
+
