@@ -3,6 +3,7 @@ var currentDayEl = $('#currentDay')
 var businessHours = [9,10,11,12,13,14,15,16,17];
 var currentHour = moment().hour()
 var hourContainer = $('#container')
+var storage = []
 // var currentHourParsed = currentHour.format("LT")
 
 //interval for clock at top of page
@@ -28,7 +29,7 @@ function showHourEls(){
             }
         };
     //create input areas
-    var inputArea = $("<input type='text' class='user-input form-control  col-md-10 col-8' placeholder='Whatcha got going on?' aria-label='Recipients username' aria-describedby='button-addon2'>")
+    var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'></textarea>")
     
     //create buttons
     var hourButton = $("<button class='btn btn-outline-dark saveBtn col' type='button' id='button-addon2'><i class='fas fa-save'></i></button>")
@@ -64,16 +65,28 @@ function auditHours() {
         }
         if (moment(currentHour).isSame(parsedTime)) {
             $(this).children('.user-input').addClass('present')
-        }
-
-        console.log('current hour', currentHour)
-        console.log("time-object", scheduleTime)
-        
-
+        }        
     }
 )};
+  
+
+hourContainer.children('.row').each(
+    console.log(this)
+    // var text = $(this)
+    // .children('input')
+    // .value();
+
+    // console.log(text)
+    // storage.push(text)
+)
+
+function storeTasks () {
+    
+}
 
 
+
+$("button").on('click', storeTasks)
 
 showHourEls();
 auditHours();
