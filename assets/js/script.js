@@ -1,7 +1,7 @@
 var currentDayEl = $('#currentDay')
     .text(moment().format('MMMM DD YYYY - hh:mm:ss'));
 var businessHours = [9,10,11,12,13,14,15,16,17];
-var currentHour = moment().hour();
+var currentHour = moment().hour()
 var hourContainer = $('#container')
 // var currentHourParsed = currentHour.format("LT")
 
@@ -52,26 +52,27 @@ function showHourEls(){
 function auditHours() {
     hourContainer.children().each(function() {
         var timeEl = $(this).children('.hour');
-        var timetext = timeEl.text().trim();
-        var time = moment(timetext, "LT").format('H');
+        var timeEltext = timeEl.text().trim();
+        var scheduleTime = moment(timeEltext, "LT").format('H');
+        var parsedTime = parseInt(scheduleTime);
 
-        if (moment().isAfter(time)){
+        if (moment(currentHour).isAfter(parsedTime)){
             $(this).children('.user-input').addClass('past')
         }
-
-        if (moment().isBefore(time)){
+        if (moment(currentHour).isBefore(parsedTime)){
             $(this).children('.user-input').addClass('future')
         }
-
-        if (moment(currentHour).isSame(time)) {
+        if (moment(currentHour).isSame(parsedTime)) {
             $(this).children('.user-input').addClass('present')
         }
-        console.log('current hour', currentHour)
-        console.log("time-object", time)
 
-    })
-} 
+        console.log('current hour', currentHour)
+        console.log("time-object", scheduleTime)
         
+
+    }
+)};
+
 
 
 showHourEls();
