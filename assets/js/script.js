@@ -28,7 +28,7 @@ function showHourEls(){
             }
         };
     //create input areas
-    var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Enter your hourly tasks here!' id='floatingTextarea2' style='height: 100px'></textarea>")
+    var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Enter your hourly tasks here!' ></textarea>")
     //create buttons
     var hourButton = $("<button class='btn btn-outline-dark saveBtn col' type='button' id='button-i+9'><i class='fas fa-save'></i></button>")
     //append hours
