@@ -4,7 +4,6 @@ var businessHours = [9,10,11,12,13,14,15,16,17];
 var currentHour = moment().hour()
 var hourContainer = $('#container')
 var storage = []
-// var currentHourParsed = currentHour.format("LT")
 
 //interval for clock at top of page
 function updateClock() {
@@ -25,25 +24,20 @@ function showHourEls(){
         if(businessHours[i] >= 12){
             getBusinessHours = businessHours[i] + "PM";
             if(businessHours[i] >= 13){
-                getBusinessHours = businessHours[i] - 12 + " PM";
+                getBusinessHours = businessHours[i] - 12 + "PM";
             }
         };
     //create input areas
     var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'></textarea>")
-    
     //create buttons
-    var hourButton = $("<button class='btn btn-outline-dark saveBtn col' type='button' id='button-addon2'><i class='fas fa-save'></i></button>")
-
+    var hourButton = $("<button class='btn btn-outline-dark saveBtn col' type='button' id='button-i+9'><i class='fas fa-save'></i></button>")
     //append hours
     col1.append(getBusinessHours);
     row.append(col1);
-    
     //append input areas 
     row.append(inputArea);
-
     //append buttons 
     row.append(hourButton);
-
     //append row
     $("#container").append(row);
     } 
@@ -68,25 +62,14 @@ function auditHours() {
         }        
     }
 )};
-  
 
-hourContainer.children('.row').each(
-    console.log(this)
-    // var text = $(this)
-    // .children('input')
-    // .value();
-
-    // console.log(text)
-    // storage.push(text)
-)
-
-function storeTasks () {
-    
+function saveTasks(event){
+    var text = $(this).value()
+    console.log(text)
 }
 
 
-
-$("button").on('click', storeTasks)
+$(document).on('click', 'button', saveTasks)
 
 showHourEls();
 auditHours();
