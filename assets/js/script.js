@@ -3,7 +3,7 @@ var currentDayEl = $('#currentDay')
 var businessHours = [9,10,11,12,13,14,15,16,17];
 var currentHour = moment().hour()
 var hourContainer = $('#container')
-var storage = []
+var tasks = []
 
 //interval for clock at top of page
 function updateClock() {
@@ -28,7 +28,7 @@ function showHourEls(){
             }
         };
     //create input areas
-    var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'></textarea>")
+    var inputArea = $("<textarea class='user-input form-control col-md-10 col-8' placeholder='Enter your hourly tasks here!' id='floatingTextarea2' style='height: 100px'></textarea>")
     //create buttons
     var hourButton = $("<button class='btn btn-outline-dark saveBtn col' type='button' id='button-i+9'><i class='fas fa-save'></i></button>")
     //append hours
@@ -64,12 +64,38 @@ function auditHours() {
 )};
 
 function saveTasks(event){
-    var text = $(this).siblings('.user-input').val()
-    console.log(text)
+    hourContainer.children().each(function() {
+        //loop for each text value
+        var text = $(this).children('.user-input').val()
+
+        console.log(text)
+
+        //push to array
+        tasks.push(text) 
+    }); 
+
+    //replace localstorage with tasks array
+    localStorage.setItem('hourly tasks', JSON.stringify(tasks))
+}    
+
+
+function loadTasks() {
+    var loadedTasks = JSON.parse(localStorage.getItem('hourly tasks'))
+    var hourBoxesEl = $('.user-input')
+
+    for (let i = 0; i < loadedTasks.length; i++) {
+        if (hourBoxesEl[i] === undefined) {
+            $(this).val('Enter your hourly tasks here!')
+        } else {
+            hourBoxesEl[i].innerText = loadedTasks[i]
+        }
+    }
 }
 
-
-$(document).on('click', 'button', saveTasks)
+$(document).on('click', 'button', function() {
+    saveTasks();
+})
 
 showHourEls();
 auditHours();
+loadTasks();
