@@ -95,7 +95,7 @@ function loadTasks() {
 $(document).on('click', 'button', function() {
     saveTasks();
 })
-
+//functions
 showHourEls();
 auditHours();
 loadTasks();
