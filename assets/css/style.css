@@ -33,7 +33,7 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid rgb(255, 255, 255);;
 }
 
 .hour {
@@ -69,3 +69,23 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+.user-input {
+  height: auto;
+  color: black;
+  border: black solid 1px;
+}
+
+.user-input::placeholder {
+  height: auto;
+  color: black;
+}
+
+.hour {
+  align-items: center;
+  justify-content: right;
+  font-size: larger;
+  font-weight: bolder;
+  width: 7%;
+}
+
