@@ -64,7 +64,7 @@ function auditHours() {
 )};
 
 function saveTasks(event){
-    var text = $(this).value()
+    var text = $(this).siblings('.user-input').val()
     console.log(text)
 }
 
