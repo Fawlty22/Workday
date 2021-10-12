@@ -82,7 +82,7 @@ function saveTasks(event){
 function loadTasks() {
     var loadedTasks = JSON.parse(localStorage.getItem('hourly tasks'))
     var hourBoxesEl = $('.user-input')
-
+    //loop through hours array, and set its value to tasks[i]
     for (let i = 0; i < loadedTasks.length; i++) {
         if (hourBoxesEl[i] === undefined) {
             $(this).val('Enter your hourly tasks here!')
